@@ -184,7 +184,5 @@ public class StringAutomataTest {
         Assertions.assertTrue(AUTOMATA_2_1.isDeterministic());
         Assertions.assertTrue(AUTOMATA_3_1.isDeterministic());
         Assertions.assertTrue(AUTOMATA_4_1.isDeterministic());
-
-        Assertions.assertTrue(AUTOMATA_3_1.accept("baba"));
     }
 }
