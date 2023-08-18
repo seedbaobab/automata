@@ -46,8 +46,8 @@ public class LexicalAutomataStateTest {
         Assertions.assertTrue(AUTOMATA_2.addState(A2S1));
         Assertions.assertTrue(AUTOMATA_2.addState(A2S2));
 
-        Assertions.assertNull(AUTOMATA_1.extract("a1"));
-        Assertions.assertEquals("100", AUTOMATA_1.extract("100").symbol);
-        Assertions.assertEquals("1", AUTOMATA_1.extract("1a").symbol);
+        Assertions.assertNull(AUTOMATA_2.extract("a1"));
+        Assertions.assertEquals("\"Il est 10 heure.\"", AUTOMATA_2.extract("\"Il est 10 heure.\"").symbol);
+        Assertions.assertNull(AUTOMATA_2.extract("\"Il est 10 heure."));
     }
 }
