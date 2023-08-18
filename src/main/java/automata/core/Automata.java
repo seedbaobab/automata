@@ -64,8 +64,8 @@ public abstract class Automata<T> extends SetOfStates<T> {
     public abstract Automata<T> newAutomata();
 
     /**
-     * Transform the finite automata to a complete deterministic automata.
-     * @return The automata in its complete deterministic finite form.
+     * Transform the finite automata to a deterministic automata.
+     * @return The automata in its deterministic finite form.
      */
     public Automata<T> determine() {
         if(this.isDeterministic()) return this;

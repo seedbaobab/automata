@@ -49,7 +49,7 @@ public interface IState<T> {
 
     /**
      * Indicate if the state is deterministic and complete or not.
-     * @return <c>true</c> if the state is deterministic and complete otherwise <c>false</c>.
+     * @return <c>true</c> if the state is deterministic otherwise <c>false</c>.
      */
     boolean isDeterministic();
 }
