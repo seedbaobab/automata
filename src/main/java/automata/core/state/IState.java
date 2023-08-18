@@ -48,8 +48,8 @@ public interface IState<T> {
     boolean isInitial();
 
     /**
-     * Indicate if the state is deterministic or not.
-     * @return <c>true</c> if the state is deterministic otherwise <c>false</c>.
+     * Indicate if the state is deterministic and complete or not.
+     * @return <c>true</c> if the state is deterministic and complete otherwise <c>false</c>.
      */
     boolean isDeterministic();
 }

@@ -36,8 +36,8 @@ public abstract class Automata<T> extends SetOfStates<T> {
     }
 
     /**
-     * Indicate if the automaton is deterministic or not.
-     * @return <c>true</c> if the automaton is deterministic otherwise <c>false</c>.
+     * Indicate if the automaton is deterministic and complete or not.
+     * @return <c>true</c> if the automaton is deterministic and complete otherwise <c>false</c>.
      */
     public boolean isDeterministic() {
         if(this.initials.size() > 1) return false;
@@ -64,8 +64,8 @@ public abstract class Automata<T> extends SetOfStates<T> {
     public abstract Automata<T> newAutomata();
 
     /**
-     * Transform the finite automata to determining finite automata.
-     * @return The automata in its determining finite form.
+     * Transform the finite automata to a complete deterministic automata.
+     * @return The automata in its complete deterministic finite form.
      */
     public Automata<T> determine() {
         if(this.isDeterministic()) return this;
