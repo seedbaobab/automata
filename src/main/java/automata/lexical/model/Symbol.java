@@ -40,8 +40,8 @@ public class Symbol {
         this.code = code;
         this.start = start;
         this.symbol = symbol;
-        this.end = start + symbol.length();
         this.length = this.symbol.length();
+        this.end = start + this.length - 1;
     }
 
 }
