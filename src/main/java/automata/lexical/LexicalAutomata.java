@@ -53,7 +53,7 @@ public class LexicalAutomata extends StringAutomata {
      * @return The {@link Symbol} extracted otherwise null.
      */
     public Symbol extract(String value, int index) {
-        if(!this.accept(value)) return null;
+        if(!this.accept(value, index)) return null;
         String symbol = this.extract(value, index, null);
         if (symbol == null) return null;
         return new Symbol(this.code, symbol, index);
