@@ -1,8 +1,11 @@
 package automata.lexical;
 
+import automata.core.state.IState;
 import automata.core.statesofset.SetOfStates;
 import automata.lexical.model.Symbol;
 import automata.string.StringAutomata;
+
+import java.util.Iterator;
 
 /**
  * Class automata for a recon lexical field.
@@ -31,7 +34,7 @@ public class LexicalAutomata extends StringAutomata {
         //  Get the character at the position.
         String character = Character.toString(value.charAt(index));
         // Get the character successors.
-        SetOfStates<String> successors = this.successors(character);
+        SetOfStates<String> successors = index == 0 ? this.successors(character) : super.successors(character);
         // No successors: false
         if(successors == null) return this.hasTerminal();
         return successors.accept(value, index+1);
@@ -59,6 +62,12 @@ public class LexicalAutomata extends StringAutomata {
         return new Symbol(this.code, symbol, index);
     }
 
+    /**
+     * Extract the symbol token from a value.
+     * @param value The value.
+     * @param index The index value to test.
+     * @return The {@link Symbol} extracted otherwise null.
+     */
     private String extract(String value, int index, String token) {
         if(value.length() == index) {
             if (this.hasTerminal()) return token;
@@ -68,7 +77,7 @@ public class LexicalAutomata extends StringAutomata {
         //  Get the character at the position.
         String character = Character.toString(value.charAt(index));
         // Get the character successors.
-        LexicalAutomata successors = (LexicalAutomata) this.successors(character);
+        LexicalAutomata successors = (LexicalAutomata) (index == 0 ? this.successors(character) : super.successors(character));
         // No successors: null
         if(successors == null) {
             if (this.hasTerminal()) return token;
@@ -84,4 +93,17 @@ public class LexicalAutomata extends StringAutomata {
     public SetOfStates<String> newSetOfState() {
         return new LexicalAutomata(this.code);
     }
+
+    @Override
+    public SetOfStates<String> successors(String value) {
+        SetOfStates<String> result = null;
+        Iterator<IState<String>> iterator = this.initials.iterator();
+
+        while(iterator.hasNext() && result == null)
+            result = iterator.next().successors(value);
+
+        return result;
+    }
+
+
 }
