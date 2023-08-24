@@ -5,7 +5,6 @@ import automata.core.statesofset.SetOfStates;
 import automata.string.StringState;
 
 import java.util.Iterator;
-import java.util.Stack;
 
 public class LexicalState extends StringState {
     /**
