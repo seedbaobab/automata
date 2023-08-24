@@ -69,6 +69,7 @@ public class LexicalAutomataStateTest {
     @Test
     public void extractIdentifier() {
         String VALUE_001 = "identifier";
+        String VALUE_002 = "10a";
 
         LexicalState A1S0 = new LexicalState(AUTOMATA_2, true, true, 0);
         LexicalState A1S1 = new LexicalState(AUTOMATA_2, false, true, 1);
@@ -87,6 +88,9 @@ public class LexicalAutomataStateTest {
         Assertions.assertEquals(0, symbol.start);
         Assertions.assertEquals(VALUE_001.length(), symbol.length);
         Assertions.assertEquals(VALUE_001.length() - 1, symbol.end);
+
+        symbol = (AUTOMATA_2.extract(VALUE_002));
+        Assertions.assertNull(symbol);
     }
 
     @DisplayName("METHOD : LEXICAL AUTOMATA (STRING) extract()")
